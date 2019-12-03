@@ -66,26 +66,25 @@ var vid = document.querySelector("#myVideo");
 		console.log("Play Video")
 		// Play the video and update the volume.
 		vid.play();
-		// console.log(vid)
+		document.querySelector("#volume").innerHTML = document.querySelector("#volumeSlider").value + "%";
 	}
 
 	function pauseVid() {
 		console.log("Pause Video")
-	  	// Play the video.
 		vid.pause();
+			// Play the video.
 	}
 
 	function slowSpeed() {
-		// Slow the vido speed by half and log the new rate to the console.
-		vid.playbackRate = 0.5;
-
-		console.log(vid.playbackRate);
+		// Slow the video speed by half and log the new rate to the console.
+		vid.playbackRate *= 0.5;
+		console.log("Speed is " + vid.playbackRate);
 	}
 
 	function increaseSpeed() {
 		// Double the video speen and log the new rate to the console.
-		vid.playbackRate = 2.0;
-		console.log(vid.playbackRate);
+		vid.playbackRate *= 2.0;
+		console.log("Speed is " + vid.playbackRate);
 	}
 
 	function mute() {
@@ -97,19 +96,18 @@ var vid = document.querySelector("#myVideo");
 	 	//		log "mute" to the console
 		// 		mute the video
 		// 		change the button text to "unmute"
-
-		if (vid.muted == true) {
-			vid.muted = false
-			document.querySelector("#button").innerHTML = vid.muted
-			console.log(vid.muted)
+		console.log("")
+		var mute = document.getElementById("mute");
+		if (vid.muted) {
+			mute.innerHTML = "mute";
+			vid.muted = false;
+			console.log("Unmuted");
 		}
-
 		else {
-		vid.muted = true
-		document.querySelector("#button").innerHTML = vid.muted
-		console.log(vid.muted)
-		};
-
+			mute.innerHTML = "unmute";
+			vid.muted = true;
+			console.log("Muted");
+		}
 }
 
 
@@ -129,13 +127,13 @@ var vid = document.querySelector("#myVideo");
 	function gray() {
 		console.log("In grayscale");
 		// Utilize the existing grayscale class.
-		vid.classList.toggle("grayscale");
+		vid.classList.add("grayscale");
 	}
 
 	function color() {
 		console.log("In color");
 		// Remove the existing grayscale class.
-		vid.classList.toggle("grayscale");
+		vid.classList.remove("grayscale");
 	}
 
 	// Not sure if we can test for this???
